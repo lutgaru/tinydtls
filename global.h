@@ -66,6 +66,7 @@ typedef unsigned char uint48[6];
 typedef enum { 
   TLS_NULL_WITH_NULL_NULL = 0x0000,   /**< NULL cipher  */
   TLS_PSK_WITH_AES_128_CCM_8 = 0xC0A8, /**< see RFC 6655 */
+  TLS_PSK_WITH_GIFTCOBB_128 = 0xD001,
   TLS_ECDHE_ECDSA_WITH_AES_128_CCM_8 = 0xC0AE /**< see RFC 7251 */
 } dtls_cipher_t;
 
@@ -73,6 +74,11 @@ typedef enum {
 typedef enum {
   TLS_COMPRESSION_NULL = 0x0000		/* NULL compression */
 } dtls_compression_t;
+
+#ifndef TLS_EXP_CIPHER_GIFTCOFB
+#define TLS_EXP_CIPHER_GIFTCOFB 1
+#endif /*TLS_EXP_CIPHER_GIFTCOFB*/
+
 
 #define TLS_EXT_ELLIPTIC_CURVES		10 /* see RFC 4492 */
 #define TLS_EXT_EC_POINT_FORMATS	11 /* see RFC 4492 */

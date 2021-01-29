@@ -573,6 +573,24 @@ error:
   return ret;
 }
 
+#ifdef TLS_EXP_CIPHER_GIFTCOFB
+#include "giftcofb/crypto_aead.h"
+int 
+dtls_encrypt(const unsigned char *src, size_t length,
+	     unsigned char *buf,
+	     const unsigned char *nonce,
+	     const unsigned char *key, size_t keylen,
+	     const unsigned char *aad, size_t la)
+{
+  /* For backwards-compatibility, dtls_encrypt_params is called with
+   * M=8 and L=3. */
+  //const dtls_ccm_params_t params = { nonce, 8, 3 };
+  return crypto_aead_encrypt(buf,length,src,length,aad,la,NULL,nonce,key);
+  //return dtls_encrypt_params(&params, src, length, buf, key, keylen, aad, la);
+}
+
+
+#else
 int 
 dtls_encrypt(const unsigned char *src, size_t length,
 	     unsigned char *buf,
@@ -586,6 +604,7 @@ dtls_encrypt(const unsigned char *src, size_t length,
 
   return dtls_encrypt_params(&params, src, length, buf, key, keylen, aad, la);
 }
+#endif
 
 int
 dtls_decrypt_params(const dtls_ccm_params_t *params,
@@ -615,6 +634,21 @@ error:
   return ret;
 }
 
+#ifdef TLS_EXP_CIPHER_GIFTCOFB
+int
+dtls_decrypt(const unsigned char *src, size_t length,
+	     unsigned char *buf,
+	     const unsigned char *nonce,
+	     const unsigned char *key, size_t keylen,
+	     const unsigned char *aad, size_t la)
+{
+  /* For backwards-compatibility, dtls_encrypt_params is called with
+   * M=8 and L=3. */
+  //const dtls_ccm_params_t params = { nonce, 8, 3 };
+  return crypto_aead_decrypt(buf,length,NULL,src,length,aad,la,nonce,key);
+  //return dtls_decrypt_params(&params, src, length, buf, key, keylen, aad, la);
+}
+#else
 int
 dtls_decrypt(const unsigned char *src, size_t length,
 	     unsigned char *buf,
@@ -628,3 +662,4 @@ dtls_decrypt(const unsigned char *src, size_t length,
 
   return dtls_decrypt_params(&params, src, length, buf, key, keylen, aad, la);
 }
+#endif
