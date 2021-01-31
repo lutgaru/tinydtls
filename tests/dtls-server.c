@@ -345,10 +345,10 @@ main(int argc, char **argv) {
 	perror("select");
     } else if (result == 0) {	/* timeout */
     } else {			/* ok */
-      if (FD_ISSET(fd, &wfds))
-	;
+      if (FD_ISSET(fd, &wfds));
       else if (FD_ISSET(fd, &rfds)) {
-	dtls_handle_read(the_context);
+	      dtls_handle_read(the_context);
+        
       }
     }
   }

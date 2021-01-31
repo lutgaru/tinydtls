@@ -1,5 +1,12 @@
 # This is a -*- Makefile -*-
 
+MAKE_WITH_GIFTCOFB ?= 0
+
+ifeq ($(MAKE_WITH_GIFTCOFB),1)
+    ${info with giftcofb}
+    CFLAGS += -DTLS_EXP_CIPHER_GIFTCOFB=1
+endif
+
 CFLAGS += -DDTLSv12 -DWITH_SHA256
 tinydtls_src = dtls.c crypto.c hmac.c rijndael.c rijndael_wrap.c sha2.c ccm.c netq.c ecc.c dtls_time.c peer.c session.c dtls_prng.c encrypt.c gift128.c
 

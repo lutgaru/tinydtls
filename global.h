@@ -75,11 +75,6 @@ typedef enum {
   TLS_COMPRESSION_NULL = 0x0000		/* NULL compression */
 } dtls_compression_t;
 
-#ifndef TLS_EXP_CIPHER_GIFTCOFB
-#define TLS_EXP_CIPHER_GIFTCOFB 1
-#endif /*TLS_EXP_CIPHER_GIFTCOFB*/
-
-
 #define TLS_EXT_ELLIPTIC_CURVES		10 /* see RFC 4492 */
 #define TLS_EXT_EC_POINT_FORMATS	11 /* see RFC 4492 */
 #define TLS_EXT_SIG_HASH_ALGO		13 /* see RFC 5246 */

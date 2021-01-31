@@ -1507,7 +1507,12 @@ dtls_prepare_record(dtls_peer_t *peer, dtls_security_parameters_t *security,
      */
     memcpy(A_DATA, &DTLS_RECORD_HEADER(sendbuf)->epoch, 8); /* epoch and seq_num */
     memcpy(A_DATA + 8,  &DTLS_RECORD_HEADER(sendbuf)->content_type, 3); /* type and version */
+#ifdef TLS_EXP_CIPHER_GIFTCOFB
+    dtls_int_to_uint16(A_DATA + 11, res); /* length */
+#else /*TLS_EXP_CIPHER_GIFTCOFB*/
     dtls_int_to_uint16(A_DATA + 11, res - 8); /* length */
+#endif /*TLS_EXP_CIPHER_GIFTCOFB*/
+    
 
     res = dtls_encrypt(start + 8, res - 8, start + 8, nonce,
 		       dtls_kb_local_write_key(security, peer->role),
@@ -3534,7 +3539,7 @@ handle_handshake_msg(dtls_context_t *ctx, dtls_peer_t *peer, session_t *session,
   case DTLS_HT_CLIENT_HELLO:
 
     if ((peer && state != DTLS_STATE_CONNECTED && state != DTLS_STATE_WAIT_CLIENTHELLO) ||
-	      (!peer && state != DTLS_STATE_WAIT_CLIENTHELLO)) {
+	(!peer && state != DTLS_STATE_WAIT_CLIENTHELLO)) {
       return dtls_alert_fatal_create(DTLS_ALERT_UNEXPECTED_MESSAGE);
     }
 

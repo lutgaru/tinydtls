@@ -39,8 +39,11 @@ install := cp
 RMDIR?=rmdir
 
 # files and flags
+
+MAKE_WITH_GIFTCOFB ?= 0
+
 SOURCES:= dtls.c crypto.c ccm.c hmac.c netq.c peer.c dtls_time.c session.c dtls_debug.c dtls_prng.c
-SUB_OBJECTS:=aes/rijndael.o aes/rijndael_wrap.o @OPT_OBJS@
+SUB_OBJECTS:=aes/rijndael.o aes/rijndael_wrap.o giftcofb/gift128.o @OPT_OBJS@
 OBJECTS:= $(patsubst %.c, %.o, $(SOURCES)) $(SUB_OBJECTS)
 HEADERS:=dtls.h hmac.h dtls_debug.h dtls_config.h uthash.h numeric.h crypto.h global.h ccm.h \
  netq.h alert.h utlist.h dtls_prng.h peer.h state.h dtls_time.h session.h \
@@ -60,6 +63,11 @@ endif
 LDFLAGS:=@LDFLAGS@ @LIBS@
 ARFLAGS:=cru
 doc:=doc
+
+ifeq ($(MAKE_WITH_GIFTCOFB),1)
+CFLAGS += -DTLS_EXP_CIPHER_GIFTCOFB=1
+$(info with giftcofb)
+endif
 
 .PHONY: all dirs clean install dist distclean .gitignore doc TAGS uninstall
 
