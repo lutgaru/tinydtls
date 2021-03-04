@@ -21,6 +21,7 @@
 #include "dtls_time.h"
 #ifdef WITH_CONTIKI
 #include "dtls-support.h"
+#include "../../../../examples/coap/coap-example-client/testglobal.h"
 #endif /* WITH_CONTIKI */
 #include <stdio.h>
 #include <stdlib.h>
@@ -3482,6 +3483,12 @@ handle_handshake_msg(dtls_context_t *ctx, dtls_peer_t *peer, session_t *session,
     dtls_handshake_free(peer->handshake_params);
     peer->handshake_params = NULL;
     dtls_debug("Handshake complete\n");
+    #ifdef WITH_CONTIKI
+    //rtimer_clock_t timerdiff[2];
+    timerdiff[1]=RTIMER_NOW();
+    //printf("%" PRIu64 "\n",timerdiff[1]);
+    //printf("%" PRIu64 "\n",RTIMER_NOW());
+    #endif
     check_stack();
     peer->state = DTLS_STATE_CONNECTED;
 
