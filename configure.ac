@@ -148,5 +148,6 @@ AC_CONFIG_FILES([Makefile
 		 aes/Makefile
 		 ecc/Makefile
      giftcofb/Makefile
-     xoodyak/Makefile])
+     xoodyak/Makefile
+     ascon/ascon128v12/ref/Makefile])
 AC_OUTPUT

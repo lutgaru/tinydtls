@@ -18,6 +18,11 @@ ifeq ($(MAKE_WITH_XOODYAK),1)
     tinydtls_src += Xoodyak.c
 endif
 
+ifeq ($(MAKE_WITH_ASCON128),1)
+    ${info with ascon}
+    CFLAGS += -DTLS_EXP_CIPHER_ASCON128=1
+endif
+
 # This activates debugging support
 # CFLAGS += -DNDEBUG
 tinydtls_src += dtls_debug.c
