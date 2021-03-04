@@ -109,7 +109,6 @@ fi
 
 CPPFLAGS="${CPPFLAGS} -DDTLSv12 -DWITH_SHA256"
 OPT_OBJS="${OPT_OBJS} sha2/sha2.o"
-OPT_OBJS="${OPT_OBJS} giftcofb/encrypt.o"
 
 AC_SUBST(OPT_OBJS)
 AC_SUBST(NDEBUG)
@@ -148,5 +147,6 @@ AC_CONFIG_FILES([Makefile
 		 sha2/Makefile
 		 aes/Makefile
 		 ecc/Makefile
-     giftcofb/Makefile])
+     giftcofb/Makefile
+     xoodyak/Makefile])
 AC_OUTPUT

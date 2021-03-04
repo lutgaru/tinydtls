@@ -591,7 +591,7 @@ dtls_encrypt(const unsigned char *src, size_t length,
 	     const unsigned char *key, size_t keylen,
 	     const unsigned char *aad, size_t la)
 {
-  //printf("encriptando con giftcofb");
+  printf("encriptando con giftcofb");
   unsigned char msgp[length];
   memcpy(msgp,src,length);
   unsigned long long lencip;
@@ -602,6 +602,27 @@ dtls_encrypt(const unsigned char *src, size_t length,
   return lencip;
   //return dtls_encrypt_params(&params, src, length, buf, key, keylen, aad, la);
 }
+
+#elif defined (TLS_EXP_CIPHER_XOODYAK) 
+#include "xoodyak/crypto_aead.h"
+int 
+dtls_encrypt(const unsigned char *src, size_t length,
+	     unsigned char *buf,
+	     const unsigned char *nonce,
+	     const unsigned char *key, size_t keylen,
+	     const unsigned char *aad, size_t la)
+{
+  //printf("encriptando con xoodyak");
+  unsigned char msgp[length];
+  memcpy(msgp,src,length);
+  unsigned long long lencip;
+  /* For backwards-compatibility, dtls_encrypt_params is called with
+   * M=8 and L=3. */
+  //const dtls_ccm_params_t params = { nonce, 8, 3 };
+  crypto_aead_encrypt(buf,&lencip,msgp,length,aad,la,NULL,nonce,key);
+  return lencip;
+  //return dtls_encrypt_params(&params, src, length, buf, key, keylen, aad, la);
+}  
 
 #else
 int 
@@ -650,7 +671,6 @@ error:
 
 #ifdef TLS_EXP_CIPHER_GIFTCOFB
 
-
 int
 dtls_decrypt(const unsigned char *src, size_t length,
 	     unsigned char *buf,
@@ -660,28 +680,34 @@ dtls_decrypt(const unsigned char *src, size_t length,
 {
   /* For backwards-compatibility, dtls_encrypt_params is called with
    * M=8 and L=3. */
-  //printf("desencriptando con giftcofb");
+  printf("desencriptando con giftcofb");
   unsigned char ctp[length];
   memcpy(ctp,src,length);
   unsigned long long lenmen;
-  //printbuffer("nonce", nonce, 16);
-  //printbuffer("key", key, keylen);
-  //printbuffer("ad", aad, la);
-  //const dtls_ccm_params_t params = { nonce, 8, 3 };
-  // printf("buffer recibido %d: ",length);
-  // for(int k=0;k<length;k++){
-  //   printf("%02x",src[k]);
-  // }
-  // printf("\n");
   crypto_aead_decrypt(buf,&lenmen,NULL,ctp,length,aad,la,nonce,key);
-  // printf("desencriptado %d: ",lenmen);
-  // for(int k=0;k<lenmen;k++){
-  //   printf("%02x",buf[k]);
-  // }
-  // printf("\n");
   return lenmen;
   //return dtls_decrypt_params(&params, src, length, buf, key, keylen, aad, la);
 }
+#elif defined (TLS_EXP_CIPHER_XOODYAK) 
+int
+dtls_decrypt(const unsigned char *src, size_t length,
+	     unsigned char *buf,
+	     const unsigned char *nonce,
+	     const unsigned char *key, size_t keylen,
+	     const unsigned char *aad, size_t la)
+{
+  /* For backwards-compatibility, dtls_encrypt_params is called with
+   * M=8 and L=3. */
+  printf("desencriptando con xoodyak");
+  unsigned char ctp[length];
+  memcpy(ctp,src,length);
+  unsigned long long lenmen;
+  crypto_aead_decrypt(buf,&lenmen,NULL,ctp,length,aad,la,nonce,key);
+  return lenmen;
+  //return dtls_decrypt_params(&params, src, length, buf, key, keylen, aad, la);
+}
+
+
 #else
 int
 dtls_decrypt(const unsigned char *src, size_t length,

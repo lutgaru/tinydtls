@@ -1,14 +1,22 @@
 # This is a -*- Makefile -*-
 
 MAKE_WITH_GIFTCOFB ?= 0
+MAKE_WITH_XOODYAK ?=0
+
+CFLAGS += -DDTLSv12 -DWITH_SHA256
+tinydtls_src = dtls.c crypto.c hmac.c rijndael.c rijndael_wrap.c sha2.c ccm.c netq.c ecc.c dtls_time.c peer.c session.c dtls_prng.c encrypt.c
 
 ifeq ($(MAKE_WITH_GIFTCOFB),1)
     ${info with giftcofb}
     CFLAGS += -DTLS_EXP_CIPHER_GIFTCOFB=1
+    tinydtls_src += gift128.c
 endif
 
-CFLAGS += -DDTLSv12 -DWITH_SHA256
-tinydtls_src = dtls.c crypto.c hmac.c rijndael.c rijndael_wrap.c sha2.c ccm.c netq.c ecc.c dtls_time.c peer.c session.c dtls_prng.c encrypt.c gift128.c
+ifeq ($(MAKE_WITH_XOODYAK),1)
+    ${info with xoodyak}
+    CFLAGS += -DTLS_EXP_CIPHER_XOODYAK=1
+    tinydtls_src += Xoodyak.c
+endif
 
 # This activates debugging support
 # CFLAGS += -DNDEBUG

@@ -1510,6 +1510,8 @@ dtls_prepare_record(dtls_peer_t *peer, dtls_security_parameters_t *security,
     memcpy(A_DATA + 8,  &DTLS_RECORD_HEADER(sendbuf)->content_type, 3); /* type and version */
 #ifdef TLS_EXP_CIPHER_GIFTCOFB
     dtls_int_to_uint16(A_DATA + 11, res); /* length */
+#elif defined (TLS_EXP_CIPHER_XOODYAK)
+    dtls_int_to_uint16(A_DATA + 11, res); /* length */
 #else /*TLS_EXP_CIPHER_GIFTCOFB*/
     dtls_int_to_uint16(A_DATA + 11, res - 8); /* length */
 #endif /*TLS_EXP_CIPHER_GIFTCOFB*/
