@@ -86,6 +86,12 @@ $(info with ascon)
 OBJECTS +=ascon/ascon128v12/ref/encrypt.o ascon/ascon128v12/ref/decrypt.o
 endif
 
+ifeq ($(MAKE_WITH_ASCON80),1)
+CFLAGS += -DTLS_EXP_CIPHER_ASCON80=1
+$(info with ascon80)
+OBJECTS +=ascon/ascon80pqv12/ref/encrypt.o ascon/ascon80pqv12/ref/decrypt.o
+endif
+
 ifeq ($(MAKE_WITH_GRAIN128),1)
 CFLAGS += -DTLS_EXP_CIPHER_GRAIN128=1
 $(info with grain)

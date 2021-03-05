@@ -32,7 +32,11 @@
 
 /* TLS_PSK_WITH_AES_128_CCM_8 */
 #define DTLS_MAC_KEY_LENGTH    0
+#ifdef TLS_EXP_CIPHER_ASCON80
+#define DTLS_KEY_LENGTH        20 /* ASCON80 */
+#else
 #define DTLS_KEY_LENGTH        16 /* AES-128 */
+#endif
 #define DTLS_BLK_LENGTH        16 /* AES-128 */
 #define DTLS_MAC_LENGTH        DTLS_HMAC_DIGEST_SIZE
 #define DTLS_IV_LENGTH         4  /* length of nonce_explicit */

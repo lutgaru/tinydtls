@@ -23,6 +23,11 @@ ifeq ($(MAKE_WITH_ASCON128),1)
     CFLAGS += -DTLS_EXP_CIPHER_ASCON128=1
 endif
 
+ifeq ($(MAKE_WITH_ASCON80),1)
+    ${info with ascon}
+    CFLAGS += -DTLS_EXP_CIPHER_ASCON80=1
+endif
+
 ifeq ($(MAKE_WITH_GRAIN128),1)
     ${info with grain}
     CFLAGS += -DTLS_EXP_CIPHER_GRAIN128=1

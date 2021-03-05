@@ -1514,6 +1514,8 @@ dtls_prepare_record(dtls_peer_t *peer, dtls_security_parameters_t *security,
     dtls_int_to_uint16(A_DATA + 11, res); /* length */
 #elif defined (TLS_EXP_CIPHER_ASCON128)
     dtls_int_to_uint16(A_DATA + 11, res); /* length */
+#elif defined (TLS_EXP_CIPHER_ASCON80)
+    dtls_int_to_uint16(A_DATA + 11, res); /* length */
 #elif defined (TLS_EXP_CIPHER_GRAIN128)
     dtls_int_to_uint16(A_DATA + 11, res - 8); /* length */
 #elif defined (TLS_EXP_CIPHER_TINYJAMBU128)
