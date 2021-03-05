@@ -116,6 +116,12 @@ $(info with tinyjambu192)
 OBJECTS +=tinyjambu/tinyjambu192/ref/encrypt.o
 endif
 
+ifeq ($(MAKE_WITH_TINYJAMBU256),1)
+CFLAGS += -DTLS_EXP_CIPHER_TINYJAMBU256=1
+$(info with tinyjambu256)
+OBJECTS +=tinyjambu/tinyjambu256/ref/encrypt.o
+endif
+
 ifneq ("@WITH_CONTIKI@", "1")
 .SUFFIXES:
 .SUFFIXES:      .c .o

@@ -48,6 +48,11 @@ ifeq ($(MAKE_WITH_TINYJAMBU192),1)
     CFLAGS += -DTLS_EXP_CIPHER_TINYJAMBU192=1
 endif
 
+ifeq ($(MAKE_WITH_TINYJAMBU256),1)
+    ${info with tinyjambu256}
+    CFLAGS += -DTLS_EXP_CIPHER_TINYJAMBU256=1
+endif
+
 # This activates debugging support
 # CFLAGS += -DNDEBUG
 tinydtls_src += dtls_debug.c

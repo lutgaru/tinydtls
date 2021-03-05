@@ -154,5 +154,6 @@ AC_CONFIG_FILES([Makefile
      ascon/ascon128apqv12/ref/Makefile
      grain/Makefile
      tinyjambu/tinyjambu128/Makefile
-     tinyjambu/tinyjambu192/ref/Makefile])
+     tinyjambu/tinyjambu192/ref/Makefile
+     tinyjambu/tinyjambu256/ref/Makefile])
 AC_OUTPUT
