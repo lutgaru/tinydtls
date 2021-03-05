@@ -86,6 +86,12 @@ $(info with ascon)
 OBJECTS +=ascon/ascon128v12/ref/encrypt.o ascon/ascon128v12/ref/decrypt.o
 endif
 
+ifeq ($(MAKE_WITH_GRAIN128),1)
+CFLAGS += -DTLS_EXP_CIPHER_GRAIN128=1
+$(info with grain)
+OBJECTS +=grain/grain128aead.o
+endif
+
 ifneq ("@WITH_CONTIKI@", "1")
 .SUFFIXES:
 .SUFFIXES:      .c .o
