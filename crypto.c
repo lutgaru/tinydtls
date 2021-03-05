@@ -666,6 +666,27 @@ dtls_encrypt(const unsigned char *src, size_t length,
   //return dtls_encrypt_params(&params, src, length, buf, key, keylen, aad, la);
 }  
 
+#elif defined (TLS_EXP_CIPHER_TINYJAMBU128) 
+#include "tinyjambu/tinyjambu128/crypto_aead.h"
+int 
+dtls_encrypt(const unsigned char *src, size_t length,
+	     unsigned char *buf,
+	     const unsigned char *nonce,
+	     const unsigned char *key, size_t keylen,
+	     const unsigned char *aad, size_t la)
+{
+  printf("encriptando con tinyjambu128");
+  unsigned char msgp[length];
+  memcpy(msgp,src,length);
+  unsigned long long lencip;
+  /* For backwards-compatibility, dtls_encrypt_params is called with
+   * M=8 and L=3. */
+  //const dtls_ccm_params_t params = { nonce, 8, 3 };
+  crypto_aead_encrypt(buf,&lencip,msgp,length,aad,la,NULL,nonce,key);
+  return lencip;
+  //return dtls_encrypt_params(&params, src, length, buf, key, keylen, aad, la);
+}  
+
 #else
 int 
 dtls_encrypt(const unsigned char *src, size_t length,
@@ -779,6 +800,25 @@ dtls_decrypt(const unsigned char *src, size_t length,
   /* For backwards-compatibility, dtls_encrypt_params is called with
    * M=8 and L=3. */
   printf("desencriptando con grain128");
+  unsigned char ctp[length];
+  memcpy(ctp,src,length);
+  unsigned long long lenmen;
+  crypto_aead_decrypt(buf,&lenmen,NULL,ctp,length,aad,la,nonce,key);
+  return lenmen;
+  //return dtls_decrypt_params(&params, src, length, buf, key, keylen, aad, la);
+}
+
+#elif defined (TLS_EXP_CIPHER_TINYJAMBU128) 
+int
+dtls_decrypt(const unsigned char *src, size_t length,
+	     unsigned char *buf,
+	     const unsigned char *nonce,
+	     const unsigned char *key, size_t keylen,
+	     const unsigned char *aad, size_t la)
+{
+  /* For backwards-compatibility, dtls_encrypt_params is called with
+   * M=8 and L=3. */
+  printf("desencriptando con tinyjambu");
   unsigned char ctp[length];
   memcpy(ctp,src,length);
   unsigned long long lenmen;
