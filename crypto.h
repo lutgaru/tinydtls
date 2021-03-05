@@ -34,6 +34,8 @@
 #define DTLS_MAC_KEY_LENGTH    0
 #ifdef TLS_EXP_CIPHER_ASCON80
 #define DTLS_KEY_LENGTH        20 /* ASCON80 */
+#elif defined (TLS_EXP_CIPHER_TINYJAMBU192)
+#define DTLS_KEY_LENGTH        24 /*TINYJAMBU192 */
 #else
 #define DTLS_KEY_LENGTH        16 /* AES-128 */
 #endif

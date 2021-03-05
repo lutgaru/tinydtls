@@ -106,8 +106,14 @@ endif
 
 ifeq ($(MAKE_WITH_TINYJAMBU128),1)
 CFLAGS += -DTLS_EXP_CIPHER_TINYJAMBU128=1
-$(info with grain)
+$(info with tinyjambu128)
 OBJECTS +=tinyjambu/tinyjambu128/encrypt.o
+endif
+
+ifeq ($(MAKE_WITH_TINYJAMBU192),1)
+CFLAGS += -DTLS_EXP_CIPHER_TINYJAMBU192=1
+$(info with tinyjambu192)
+OBJECTS +=tinyjambu/tinyjambu192/ref/encrypt.o
 endif
 
 ifneq ("@WITH_CONTIKI@", "1")

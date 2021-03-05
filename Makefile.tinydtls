@@ -39,8 +39,13 @@ ifeq ($(MAKE_WITH_GRAIN128),1)
 endif
 
 ifeq ($(MAKE_WITH_TINYJAMBU128),1)
-    ${info with grain}
+    ${info with tinyjambu128}
     CFLAGS += -DTLS_EXP_CIPHER_TINYJAMBU128=1
+endif
+
+ifeq ($(MAKE_WITH_TINYJAMBU192),1)
+    ${info with tinyjambu192}
+    CFLAGS += -DTLS_EXP_CIPHER_TINYJAMBU192=1
 endif
 
 # This activates debugging support
