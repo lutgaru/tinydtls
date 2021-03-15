@@ -591,14 +591,16 @@ dtls_encrypt(const unsigned char *src, size_t length,
 	     const unsigned char *key, size_t keylen,
 	     const unsigned char *aad, size_t la)
 {
-  printf("encriptando con giftcofb");
+  //printf("encriptando con giftcofb");
   unsigned char msgp[length];
+  printf("encrypt1 %d\n",RTIMER_NOW());
   memcpy(msgp,src,length);
   unsigned long long lencip;
   /* For backwards-compatibility, dtls_encrypt_params is called with
    * M=8 and L=3. */
   //const dtls_ccm_params_t params = { nonce, 8, 3 };
   crypto_aead_encrypt(buf,&lencip,msgp,length,aad,la,NULL,nonce,key);
+  printf("encrypt2 %d\n",RTIMER_NOW());
   return lencip;
   //return dtls_encrypt_params(&params, src, length, buf, key, keylen, aad, la);
 }
@@ -614,12 +616,14 @@ dtls_encrypt(const unsigned char *src, size_t length,
 {
   //printf("encriptando con xoodyak");
   unsigned char msgp[length];
+  printf("encrypt1 %d\n",RTIMER_NOW());
   memcpy(msgp,src,length);
   unsigned long long lencip;
   /* For backwards-compatibility, dtls_encrypt_params is called with
    * M=8 and L=3. */
   //const dtls_ccm_params_t params = { nonce, 8, 3 };
   crypto_aead_encrypt(buf,&lencip,msgp,length,aad,la,NULL,nonce,key);
+  printf("encrypt2 %d\n",RTIMER_NOW());
   return lencip;
   //return dtls_encrypt_params(&params, src, length, buf, key, keylen, aad, la);
 }  
@@ -633,14 +637,16 @@ dtls_encrypt(const unsigned char *src, size_t length,
 	     const unsigned char *key, size_t keylen,
 	     const unsigned char *aad, size_t la)
 {
-  printf("encriptando con ascon");
+  //printf("encriptando con ascon");
   unsigned char msgp[length];
+  printf("encrypt1 %d\n",RTIMER_NOW());
   memcpy(msgp,src,length);
   unsigned long long lencip;
   /* For backwards-compatibility, dtls_encrypt_params is called with
    * M=8 and L=3. */
   //const dtls_ccm_params_t params = { nonce, 8, 3 };
   crypto_aead_encrypt(buf,&lencip,msgp,length,aad,la,NULL,nonce,key);
+  printf("encrypt2 %d\n",RTIMER_NOW());
   return lencip;
   //return dtls_encrypt_params(&params, src, length, buf, key, keylen, aad, la);
 }  
@@ -654,14 +660,16 @@ dtls_encrypt(const unsigned char *src, size_t length,
 	     const unsigned char *key, size_t keylen,
 	     const unsigned char *aad, size_t la)
 {
-  printf("encriptando con ascon128a");
+  //printf("encriptando con ascon128a");
   unsigned char msgp[length];
+  printf("encrypt1 %d\n",RTIMER_NOW());
   memcpy(msgp,src,length);
   unsigned long long lencip;
   /* For backwards-compatibility, dtls_encrypt_params is called with
    * M=8 and L=3. */
   //const dtls_ccm_params_t params = { nonce, 8, 3 };
   crypto_aead_encrypt(buf,&lencip,msgp,length,aad,la,NULL,nonce,key);
+  printf("encrypt2 %d\n",RTIMER_NOW());
   return lencip;
   //return dtls_encrypt_params(&params, src, length, buf, key, keylen, aad, la);
 }  
@@ -675,14 +683,16 @@ dtls_encrypt(const unsigned char *src, size_t length,
 	     const unsigned char *key, size_t keylen,
 	     const unsigned char *aad, size_t la)
 {
-  printf("encriptando con ascon80");
+  //printf("encriptando con ascon80");
   unsigned char msgp[length];
+  printf("encrypt1 %d\n",RTIMER_NOW());
   memcpy(msgp,src,length);
   unsigned long long lencip;
   /* For backwards-compatibility, dtls_encrypt_params is called with
    * M=8 and L=3. */
   //const dtls_ccm_params_t params = { nonce, 8, 3 };
   crypto_aead_encrypt(buf,&lencip,msgp,length,aad,la,NULL,nonce,key);
+  printf("encrypt2 %d\n",RTIMER_NOW());
   return lencip;
   //return dtls_encrypt_params(&params, src, length, buf, key, keylen, aad, la);
 } 
@@ -696,14 +706,16 @@ dtls_encrypt(const unsigned char *src, size_t length,
 	     const unsigned char *key, size_t keylen,
 	     const unsigned char *aad, size_t la)
 {
-  printf("encriptando con grain");
+  //printf("encriptando con grain");
   unsigned char msgp[length];
+  printf("encrypt1 %d\n",RTIMER_NOW());
   memcpy(msgp,src,length);
   unsigned long long lencip;
   /* For backwards-compatibility, dtls_encrypt_params is called with
    * M=8 and L=3. */
   //const dtls_ccm_params_t params = { nonce, 8, 3 };
   crypto_aead_encrypt(buf,&lencip,msgp,length,aad,la,NULL,nonce,key);
+  printf("encrypt2 %d\n",RTIMER_NOW());
   return lencip;
   //return dtls_encrypt_params(&params, src, length, buf, key, keylen, aad, la);
 }  
@@ -717,14 +729,16 @@ dtls_encrypt(const unsigned char *src, size_t length,
 	     const unsigned char *key, size_t keylen,
 	     const unsigned char *aad, size_t la)
 {
-  printf("encriptando con tinyjambu128");
+  //printf("encriptando con tinyjambu128");
   unsigned char msgp[length];
+  printf("encrypt1 %d\n",RTIMER_NOW());
   memcpy(msgp,src,length);
   unsigned long long lencip;
   /* For backwards-compatibility, dtls_encrypt_params is called with
    * M=8 and L=3. */
   //const dtls_ccm_params_t params = { nonce, 8, 3 };
   crypto_aead_encrypt(buf,&lencip,msgp,length,aad,la,NULL,nonce,key);
+  printf("encrypt2 %d\n",RTIMER_NOW());
   return lencip;
   //return dtls_encrypt_params(&params, src, length, buf, key, keylen, aad, la);
 }  
@@ -738,14 +752,16 @@ dtls_encrypt(const unsigned char *src, size_t length,
 	     const unsigned char *key, size_t keylen,
 	     const unsigned char *aad, size_t la)
 {
-  printf("encriptando con tinyjambu192");
+  //printf("encriptando con tinyjambu192");
   unsigned char msgp[length];
+  printf("encrypt1 %d\n",RTIMER_NOW());
   memcpy(msgp,src,length);
   unsigned long long lencip;
   /* For backwards-compatibility, dtls_encrypt_params is called with
    * M=8 and L=3. */
   //const dtls_ccm_params_t params = { nonce, 8, 3 };
   crypto_aead_encrypt(buf,&lencip,msgp,length,aad,la,NULL,nonce,key);
+  printf("encrypt2 %d\n",RTIMER_NOW());
   return lencip;
   //return dtls_encrypt_params(&params, src, length, buf, key, keylen, aad, la);
 }  
@@ -759,14 +775,16 @@ dtls_encrypt(const unsigned char *src, size_t length,
 	     const unsigned char *key, size_t keylen,
 	     const unsigned char *aad, size_t la)
 {
-  printf("encriptando con tinyjambu256");
+  //printf("encriptando con tinyjambu256");
   unsigned char msgp[length];
+  printf("encrypt1 %d\n",RTIMER_NOW());
   memcpy(msgp,src,length);
   unsigned long long lencip;
   /* For backwards-compatibility, dtls_encrypt_params is called with
    * M=8 and L=3. */
   //const dtls_ccm_params_t params = { nonce, 8, 3 };
   crypto_aead_encrypt(buf,&lencip,msgp,length,aad,la,NULL,nonce,key);
+  printf("encrypt2 %d\n",RTIMER_NOW());
   return lencip;
   //return dtls_encrypt_params(&params, src, length, buf, key, keylen, aad, la);
 }  
@@ -781,9 +799,12 @@ dtls_encrypt(const unsigned char *src, size_t length,
 {
   /* For backwards-compatibility, dtls_encrypt_params is called with
    * M=8 and L=3. */
+  printf("encrypt1 %d\n",RTIMER_NOW());
   const dtls_ccm_params_t params = { nonce, 8, 3 };
-
-  return dtls_encrypt_params(&params, src, length, buf, key, keylen, aad, la);
+  unsigned long long lenmen;
+  lenmen = dtls_encrypt_params(&params, src, length, buf, key, keylen, aad, la);
+  printf("encrypt2 %d\n",RTIMER_NOW());
+  return lenmen;
 }
 #endif
 
@@ -827,11 +848,13 @@ dtls_decrypt(const unsigned char *src, size_t length,
 {
   /* For backwards-compatibility, dtls_encrypt_params is called with
    * M=8 and L=3. */
-  printf("desencriptando con giftcofb");
+  //printf("desencriptando con giftcofb");
   unsigned char ctp[length];
+  printf("decrypt1 %d\n",RTIMER_NOW());
   memcpy(ctp,src,length);
   unsigned long long lenmen;
   crypto_aead_decrypt(buf,&lenmen,NULL,ctp,length,aad,la,nonce,key);
+  printf("decrypt2 %d\n",RTIMER_NOW());
   return lenmen;
   //return dtls_decrypt_params(&params, src, length, buf, key, keylen, aad, la);
 }
@@ -845,11 +868,13 @@ dtls_decrypt(const unsigned char *src, size_t length,
 {
   /* For backwards-compatibility, dtls_encrypt_params is called with
    * M=8 and L=3. */
-  printf("desencriptando con xoodyak");
+  //printf("desencriptando con xoodyak");
   unsigned char ctp[length];
+  printf("decrypt1 %d\n",RTIMER_NOW());
   memcpy(ctp,src,length);
   unsigned long long lenmen;
   crypto_aead_decrypt(buf,&lenmen,NULL,ctp,length,aad,la,nonce,key);
+  printf("decrypt2 %d\n",RTIMER_NOW());
   return lenmen;
   //return dtls_decrypt_params(&params, src, length, buf, key, keylen, aad, la);
 }
@@ -864,11 +889,13 @@ dtls_decrypt(const unsigned char *src, size_t length,
 {
   /* For backwards-compatibility, dtls_encrypt_params is called with
    * M=8 and L=3. */
-  printf("desencriptando con ascon128");
+  //printf("desencriptando con ascon128");
   unsigned char ctp[length];
+  printf("decrypt1 %d\n",RTIMER_NOW());
   memcpy(ctp,src,length);
   unsigned long long lenmen;
   crypto_aead_decrypt(buf,&lenmen,NULL,ctp,length,aad,la,nonce,key);
+  printf("decrypt2 %d\n",RTIMER_NOW());
   return lenmen;
   //return dtls_decrypt_params(&params, src, length, buf, key, keylen, aad, la);
 }
@@ -883,11 +910,13 @@ dtls_decrypt(const unsigned char *src, size_t length,
 {
   /* For backwards-compatibility, dtls_encrypt_params is called with
    * M=8 and L=3. */
-  printf("desencriptando con ascon128a");
+  //printf("desencriptando con ascon128a");
   unsigned char ctp[length];
+  printf("decrypt1 %d\n",RTIMER_NOW());
   memcpy(ctp,src,length);
   unsigned long long lenmen;
   crypto_aead_decrypt(buf,&lenmen,NULL,ctp,length,aad,la,nonce,key);
+  printf("decrypt2 %d\n",RTIMER_NOW());
   return lenmen;
   //return dtls_decrypt_params(&params, src, length, buf, key, keylen, aad, la);
 }
@@ -902,11 +931,13 @@ dtls_decrypt(const unsigned char *src, size_t length,
 {
   /* For backwards-compatibility, dtls_encrypt_params is called with
    * M=8 and L=3. */
-  printf("desencriptando con ascon80");
+  //printf("desencriptando con ascon80");
   unsigned char ctp[length];
+  printf("decrypt1 %d\n",RTIMER_NOW());
   memcpy(ctp,src,length);
   unsigned long long lenmen;
   crypto_aead_decrypt(buf,&lenmen,NULL,ctp,length,aad,la,nonce,key);
+  printf("decrypt2 %d\n",RTIMER_NOW());
   return lenmen;
   //return dtls_decrypt_params(&params, src, length, buf, key, keylen, aad, la);
 }
@@ -921,11 +952,13 @@ dtls_decrypt(const unsigned char *src, size_t length,
 {
   /* For backwards-compatibility, dtls_encrypt_params is called with
    * M=8 and L=3. */
-  printf("desencriptando con grain128");
+  //printf("desencriptando con grain128");
   unsigned char ctp[length];
+  printf("decrypt1 %d\n",RTIMER_NOW());
   memcpy(ctp,src,length);
   unsigned long long lenmen;
   crypto_aead_decrypt(buf,&lenmen,NULL,ctp,length,aad,la,nonce,key);
+  printf("decrypt2 %d\n",RTIMER_NOW());
   return lenmen;
   //return dtls_decrypt_params(&params, src, length, buf, key, keylen, aad, la);
 }
@@ -940,11 +973,13 @@ dtls_decrypt(const unsigned char *src, size_t length,
 {
   /* For backwards-compatibility, dtls_encrypt_params is called with
    * M=8 and L=3. */
-  printf("desencriptando con tinyjambu");
+  //printf("desencriptando con tinyjambu");
   unsigned char ctp[length];
+  printf("decrypt1 %d\n",RTIMER_NOW());
   memcpy(ctp,src,length);
   unsigned long long lenmen;
   crypto_aead_decrypt(buf,&lenmen,NULL,ctp,length,aad,la,nonce,key);
+  printf("decrypt2 %d\n",RTIMER_NOW());
   return lenmen;
   //return dtls_decrypt_params(&params, src, length, buf, key, keylen, aad, la);
 }
@@ -959,11 +994,13 @@ dtls_decrypt(const unsigned char *src, size_t length,
 {
   /* For backwards-compatibility, dtls_encrypt_params is called with
    * M=8 and L=3. */
-  printf("desencriptando con tinyjambu192");
+  //printf("desencriptando con tinyjambu192");
   unsigned char ctp[length];
+  printf("decrypt1 %d\n",RTIMER_NOW());
   memcpy(ctp,src,length);
   unsigned long long lenmen;
   crypto_aead_decrypt(buf,&lenmen,NULL,ctp,length,aad,la,nonce,key);
+  printf("decrypt2 %d\n",RTIMER_NOW());
   return lenmen;
   //return dtls_decrypt_params(&params, src, length, buf, key, keylen, aad, la);
 }
@@ -978,11 +1015,13 @@ dtls_decrypt(const unsigned char *src, size_t length,
 {
   /* For backwards-compatibility, dtls_encrypt_params is called with
    * M=8 and L=3. */
-  printf("desencriptando con tinyjambu256");
+  //printf("desencriptando con tinyjambu256");
   unsigned char ctp[length];
+  printf("decrypt1 %d\n",RTIMER_NOW());
   memcpy(ctp,src,length);
   unsigned long long lenmen;
   crypto_aead_decrypt(buf,&lenmen,NULL,ctp,length,aad,la,nonce,key);
+  printf("decrypt2 %d\n",RTIMER_NOW());
   return lenmen;
   //return dtls_decrypt_params(&params, src, length, buf, key, keylen, aad, la);
 }
@@ -997,7 +1036,11 @@ dtls_decrypt(const unsigned char *src, size_t length,
 {
   /* For backwards-compatibility, dtls_encrypt_params is called with
    * M=8 and L=3. */
+  printf("decrypt1 %d\n",RTIMER_NOW());
   const dtls_ccm_params_t params = { nonce, 8, 3 };
-  return dtls_decrypt_params(&params, src, length, buf, key, keylen, aad, la);
+  unsigned long long lenmen;
+  lenmen=dtls_decrypt_params(&params, src, length, buf, key, keylen, aad, la);
+  printf("decrypt2 %d\n",RTIMER_NOW());
+  return lenmen;
 }
 #endif
