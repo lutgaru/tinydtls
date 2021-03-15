@@ -147,13 +147,13 @@ AC_CONFIG_FILES([Makefile
 		 sha2/Makefile
 		 aes/Makefile
 		 ecc/Makefile
-     giftcofb/Makefile
-     xoodyak/Makefile
+     giftcofb/ref/Makefile
+     xoodyak/ref/Makefile
      ascon/ascon128v12/ref/Makefile
      ascon/ascon80pqv12/ref/Makefile
-     ascon/ascon128apqv12/ref/Makefile
-     grain/Makefile
-     tinyjambu/tinyjambu128/Makefile
+     ascon/ascon128av12/ref/Makefile
+     grain/ref/Makefile
+     tinyjambu/tinyjambu128/ref/Makefile
      tinyjambu/tinyjambu192/ref/Makefile
      tinyjambu/tinyjambu256/ref/Makefile])
 AC_OUTPUT

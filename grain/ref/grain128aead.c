@@ -17,6 +17,7 @@
 #include <string.h>
 
 #include "grain128aead.h"
+#include "crypto_aead.h"
 
 unsigned char grain_round;
 

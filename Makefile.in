@@ -71,13 +71,13 @@ doc:=doc
 ifeq ($(MAKE_WITH_GIFTCOFB),1)
 CFLAGS += -DTLS_EXP_CIPHER_GIFTCOFB=1
 $(info with giftcofb)
-OBJECTS +=giftcofb/gift128.o giftcofb/encrypt.o
+OBJECTS +=giftcofb/ref/gift128.o giftcofb/ref/encrypt.o
 endif
 
 ifeq ($(MAKE_WITH_XOODYAK),1)
 CFLAGS += -DTLS_EXP_CIPHER_XOODYAK=1
 $(info with xoodyak)
-OBJECTS +=xoodyak/Xoodyak.o xoodyak/encrypt.o xoodyak/Xoodoo-reference.o
+OBJECTS +=xoodyak/ref/Xoodyak.o xoodyak/ref/encrypt.o xoodyak/ref/Xoodoo-reference.o
 endif
 
 ifeq ($(MAKE_WITH_ASCON128),1)
@@ -101,13 +101,13 @@ endif
 ifeq ($(MAKE_WITH_GRAIN128),1)
 CFLAGS += -DTLS_EXP_CIPHER_GRAIN128=1
 $(info with grain)
-OBJECTS +=grain/grain128aead.o
+OBJECTS +=grain/ref/grain128aead.o
 endif
 
 ifeq ($(MAKE_WITH_TINYJAMBU128),1)
 CFLAGS += -DTLS_EXP_CIPHER_TINYJAMBU128=1
 $(info with tinyjambu128)
-OBJECTS +=tinyjambu/tinyjambu128/encrypt.o
+OBJECTS +=tinyjambu/tinyjambu128/ref/encrypt.o
 endif
 
 ifeq ($(MAKE_WITH_TINYJAMBU192),1)

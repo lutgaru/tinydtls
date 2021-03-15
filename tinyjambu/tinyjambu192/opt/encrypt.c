@@ -9,7 +9,7 @@
 
 #include <string.h>  
 #include <stdio.h> 
-#include "crypto_aead.h"
+#include "../ref/crypto_aead.h"
 
 #define FrameBitsIV  0x10  
 #define FrameBitsAD  0x30  
